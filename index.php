@@ -20,7 +20,7 @@
                 My GitHub repositories        
         </div>
 
-        
+
         <div class="terminal" id="terminal">
                 <pre style="margin: 0 auto; width: 60%; min-width: 50em;">
 ╔═══╗╔═══╗╔═══╗╔═══╗╔═══╗
@@ -37,7 +37,7 @@
                         ╚╝╚═╝╚═══╝╚═══╝╚═══╝╚╝╚═╝──╚╝──╚══╝ Desarrollador de software
         
 (Escriba 'a' o 'ayuda' para
-ver los comandos disponibles)
+ver los comandos disponibles) 
                 </pre>
 
                 <p class="hl center">
