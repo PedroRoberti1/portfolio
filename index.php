@@ -6,8 +6,8 @@
         <meta name="description" content="<?php echo $content; ?>">
         <meta name="viewport" content="width=device-width">
         <title>Pedro Roberti- Desarrollador de software</title>
-        <link rel="stylesheet" href="style.css" type="text/css">
-        <script src="main.js"></script>
+        <link rel="stylesheet" href="assets/dist/css/style.css" type="text/css">
+        <script src="pages/main.js"></script>
 </head>
 
 <body onkeyup="keypressing(event);">
@@ -15,11 +15,17 @@
                 <div class="option" onclick="executeFromSelect('cv');">Show cv</div>
                 <div class="option" onclick="executeFromSelect('printable');">
                         Dowload printable CV (pdf)
+                </div>
+                <div class="option" onclick="executeFromSelect('github');">
+                        My GitHub repositories
+                </div>
+                <div class="option" onclick="excecuteFromSelect('contact');">
+                        Contact me!
+                </div>
+                <div class="option" onclick="executeFromSelect('help');">
+                        Show terminal help
+                </div>
         </div>
-        <div class="option" onclick="executeFromSelect('github');"></div>
-                My GitHub repositories        
-        </div>
-
 
         <div class="terminal" id="terminal">
                 <pre style="margin: 0 auto; width: 60%; min-width: 50em;">

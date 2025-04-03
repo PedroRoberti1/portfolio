@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'inconsolata';
-    src: url('fonts/Inconsolata-Regular.ttf');
+    src: url('/assets/fonts/Inconsolata-Regular.ttf');
 }
 
 @keyframes blinking {
