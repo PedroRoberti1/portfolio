@@ -19,7 +19,7 @@
                 <div class="option" onclick="executeFromSelect('github');">
                         My GitHub repositories
                 </div>
-                <div class="option" onclick="excecuteFromSelect('contact');">
+                <div class="option" onclick="executeFromSelect('contact');">
                         Contact me!
                 </div>
                 <div class="option" onclick="executeFromSelect('help');">
@@ -49,7 +49,7 @@ ver los comandos disponibles)
                 <p class="hl center">
                         <a href="es.php" onclick="event.stopPropagation();">Spanish Version</a>
                 </p>
-                <p class="commandLine"><span class="prompt">visitor@pedroroberti:~</span>
+                <p class="commandLine"><span class="prompt">visitante@pedroroberti:~</span>
                         <noscript>
                                 <span class="h1">(This site requires javascript - won't work)</span>
                         </noscript>

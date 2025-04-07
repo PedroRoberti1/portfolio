@@ -1,4 +1,3 @@
-
 //Cuando el usuario hace clic en ese elemento, se ejecuta la función showSelectOfCommands.
 
 window.onload= function(){
@@ -9,10 +8,48 @@ window.onload= function(){
 
 
 
+function commandStats(comm){
+    var request = new XMLHttpRequest();
+    request.onreadystatechange=function(){
+        if(this.readyState==4 && this.status==200){
+            console.log(this.responseText);
+        }
+    };
+    request.open("POST","commandstats.php", true);
+    request.setRequestHeader("Content-type", "application/x-www-form-unrelcoded");
+    request.send("command="+comm);
+}
 
-//function executeFromSelect(commandSelected){
-    //Excecuta el comando seleccionado en la lista de comandos
-//}
+
+function showSelectOfCommands(){
+    document.getElementById("terminal").classList.add('blureado');
+    let x = document.getElementById("x");
+    x.style.display="block";
+    x.style.zIndex=3;
+    x.focus();
+
+}
+
+function executeFromSelect(commandSelected){
+    //Ejecuta los comandos seleccionados en la lista de opciones.
+    let x =document.getElementById("x");
+    x.style.display= "none";
+
+    //Deseleccionar todos los botones
+    var ele= document.getElementsByName("command");
+    for(var i=0;i<ele.length;i++){
+        ele[i].checked =false;
+    }
+
+    document.getElementById("terminal").classList.remove('blureado');
+    setTimeout(()=>{
+        document.getElementById("currentCommand").innerHTML= commandSelected;
+    }, 800);
+    setTimeout(()=> {
+        command(commandSelected)
+    }, 1000);
+
+}
 
 function keypressing(event)
 {
@@ -38,6 +75,42 @@ function keypressing(event)
     }
 
 
+}
+
+
+
+function command(c){
+    //recibe un comando y lo ejecuta.
+
+    commandStats(c);
+
+    //Busca el ultimo comando en la terminal, lo elimina como "comando actual" y lo agrega como un comando ya ejecutado:
+
+    let last_command= document.querySelectorAll('.commandLine');
+    last_command= last_command[last_command.length -1];
+    last_command.removeChild(last_command.lastChild);
+    let commandSpan= document.createElement('span');
+    commandSpan.innerHTML=c;
+    last_command.appendChild(commandSpan);
+
+    // Crea una linea de aviso para un nuevo comando(futuro):
+
+    let newCommand= document.createElement('p');
+    newCommand.className= 'commandLine';
+    newCommand.innerHTML = '<p class="commandLine"><span class="prompt">visitante@pedroroberti:~</span> <span class="command"><span id="currentCommand"></span><span class="cursor">_</span></span>';
+
+    //Preparado para responder el ultimo comando:
+    let term= document.querySelector('.terminal');
+    let responseParagraph= document.createElement('p');
+    responseParagraph.className='response';
+    responseParagraph.innerHTML=commandResponse(c);
+
+    // Añade la respuesta y el nuevo comando a la terminal:
+    term.appendChild(responseParagraph);
+    term.appendChild(newCommand);
+
+    term.scrollTop=term.scrollHeight;
+}
     
 function commandResponse(c){
     //Recibe un comando y ejecuta el mismo.
@@ -55,7 +128,7 @@ function commandResponse(c){
             break;
         case 'github':
         case 'g':
-            text = github();
+            text = git();
             break;
         case 'contact':
         case 'o':
@@ -76,6 +149,30 @@ function commandResponse(c){
     }
     return text;
 
-}
+    function git(){
+        let text = "Entra a <a href='https://github.com/PedroRoberti1'";
+        text += "target='_blank onclick='event.stopPropagation();'> mi respositorio de Github</a>!";
+        return text;
+    }
+
+    function cv(){
+        let text ="Hola! Soy <strong class='hl'>Pedro Roberti</strong> y soy un desarrollador de software viviendo en Rosario, Argentina.<br>";
+        text += "Finalice mis estudios como programador en el terciario urquiza.<br>";
+        text += "Tengo conocimientos en lenguajes tales como PHP and JavaScript.<br>";
+        text += "Puedes visitar mi repositorio de GitHub y ver mis proyectos realizados."
+        return text;
+    }
+
+    function contact(){
+        let text = "<strong class='hl'>Contactame!</strong>.<br>";
+        text += "-Mira <strong class='hl'>Mi Linkedin profile</strong>.<br>";
+        text += "-Enviame un mensaje a: <strong class= 'hl'>Pedroroberti@gmail.com</strong>";
+        return text;
+    }
+
+
 
 }
+
+
+
