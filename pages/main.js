@@ -22,6 +22,7 @@ function commandStats(comm){
 
 
 function showSelectOfCommands(){
+    //Abre terminal de opciones para dispositivos mobiles.
     document.getElementById("terminal").classList.add('blureado');
     let x = document.getElementById("x");
     x.style.display="block";
@@ -42,7 +43,7 @@ function executeFromSelect(commandSelected){
     }
 
     document.getElementById("terminal").classList.remove('blureado');
-    setTimeout(()=>{
+    setTimeout( ()=>{
         document.getElementById("currentCommand").innerHTML= commandSelected;
     }, 800);
     setTimeout(()=> {
@@ -70,7 +71,7 @@ function keypressing(event)
     // Si es un Enter, ejecuta el comando.
     else if (x== 'Enter'){
         let commandEntered= c.innerHTML;
-        commandEntered(commandEntered);
+        command(commandEntered);
  
     }
 
@@ -118,6 +119,10 @@ function commandResponse(c){
     let cm= c.toLowerCase();
     let text;
     switch(cm){
+        case 'pdf':
+        case 'p':
+            text = pdf();
+            break;
         case 'help':
         case 'h':
             text = help();
@@ -130,7 +135,7 @@ function commandResponse(c){
         case 'g':
             text = git();
             break;
-        case 'contact':
+        case 'contacto':
         case 'o':
             text = contact();
             break;
@@ -140,14 +145,15 @@ function commandResponse(c){
         case 'sudo shutdown -h now':
         case 'sudo poweroff':
         case 'rm -rf/':
-            document.querySelector('#terminal').remove();
-            break;
+             document.querySelector('#terminal').remove();
+             break;
         default:
             text = "<strong>--- Unknown command: '" + c + "' ---</strong><br>";
             text+= help();
                     break;
     }
     return text;
+}   
 
     function git(){
         let text = "Entra a <a href='https://github.com/PedroRoberti1'";
@@ -165,14 +171,27 @@ function commandResponse(c){
 
     function contact(){
         let text = "<strong class='hl'>Contactame!</strong>.<br>";
-        text += "-Mira <strong class='hl'>Mi Linkedin profile</strong>.<br>";
+        text += "-Mira <a href='https://www.linkedin.com/in/pedro-roberti-526a43358/' target='_blank onlick= 'event.stopPropagation();'> mi perfil de Linkedin</a>!<br>";
         text += "-Enviame un mensaje a: <strong class= 'hl'>Pedroroberti@gmail.com</strong>";
+        return text;
+    }
+
+    function pdf(){
+        let text = "<strong class= 'hl'>Aqui</strong> tienes disponible mi cv, si necesitas mas informacion <strong class='hl'> contactame</strong>"
+        return text;
+    }
+
+    function help(){
+        let text= "<strong class= 'hl'>Ayuda!</strong>.<br>";
+        text += "Para poder ver mi curriculum esceiba <strong class= 'hl'>cv</strong> o <strong class='hl'> c</strong>.<br>"
+        text += "Para descargar mi curriculum tradicional escriba: <strong class= 'hl'> pdf</strong> o <strong class='hl'>p</strong>. <br>"
+        text += "Para poder ver mi repositorio de GitHub escriba: <strong class= 'hl'> github</strong> o <strong class= 'hl'>g</strong>.<br>"
+        text += "Para ver las distintas opciones de contacto escriba: <strong class= 'hl'> contacto</strong> o <strong class= 'hl'> o</strong>."
         return text;
     }
 
 
 
-}
 
 
 
