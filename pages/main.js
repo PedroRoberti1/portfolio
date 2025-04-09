@@ -1,7 +1,19 @@
 //Cuando el usuario hace clic en ese elemento, se ejecuta la función showSelectOfCommands.
 
 window.onload= function(){
-    document.querySelector('.terminal').addEventListener('click', showSelectOfCommands);
+    document.querySelector('.terminal').addEventListener('click', function(event){
+        //Solo abrir si se hace click directamente sobre el fondo del terminal,
+        //y no sobre algo dentro...
+        if (event.target===terminal){
+            showSelectOfCommands();
+        }
+    });
+
+    window.addEventListener('keyup', function(event){
+        if(event.key==='Escape'){
+            closeTerminal();
+        }
+    })
 }
 
 
@@ -23,13 +35,26 @@ function commandStats(comm){
 
 function showSelectOfCommands(){
     //Abre terminal de opciones para dispositivos mobiles.
+
     document.getElementById("terminal").classList.add('blureado');
-    let x = document.getElementById("x");
+    let x= document.getElementById("x");
     x.style.display="block";
     x.style.zIndex=3;
     x.focus();
 
 }
+
+
+function closeTerminal(){
+    const terminal = document.getElementById("terminal");
+    terminal.classList.remove('blureado');
+
+    const x = document.getElementById('x');
+    x.style.display="none";
+    x.blur();
+}
+
+
 
 function executeFromSelect(commandSelected){
     //Ejecuta los comandos seleccionados en la lista de opciones.
@@ -119,6 +144,10 @@ function commandResponse(c){
     let cm= c.toLowerCase();
     let text;
     switch(cm){
+        case 'a':
+        case 'ayuda':
+            text = help();
+            break;
         case 'pdf':
         case 'p':
             text = pdf();
@@ -148,7 +177,7 @@ function commandResponse(c){
              document.querySelector('#terminal').remove();
              break;
         default:
-            text = "<strong>--- Unknown command: '" + c + "' ---</strong><br>";
+            text = "<strong>--- Comando invalido: '" + c + "' --- Lista de comandos:</strong><br>";
             text+= help();
                     break;
     }

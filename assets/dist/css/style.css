@@ -30,6 +30,7 @@
     font-size: 0.65em;
 }
 
+
 .terminal a {
     color: #fabd2f; /*yellow;*/
 }
@@ -81,6 +82,18 @@ input[type="radio"] {
 
 #x .option:hover {
     background-color: #3E3E3E; 
+}
+
+#x .closebutton{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 0, 0, 0.548);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .blureado {

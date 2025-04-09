@@ -12,7 +12,8 @@
         <script src="pages/main.js"></script>
     </head>
     <body onkeyup="keypressing(event);">
-        <div id="x">
+        <div id="x" style="display: none;">
+                <button class="closebutton" onclick="closeTerminal()">X</button>
                 <div class="option" onclick="executeFromSelect('cv');">Mostrar CV</div>
                 <div class="option" onclick="executeFromSelect('pdf');">
                         Descargar CV (pdf)
@@ -29,6 +30,7 @@
         </div>
 
         <div class="terminal" id="terminal">
+                
                 <pre style="margin: 0 auto; width: 60%; min-width: 50em;">
 ╔═══╗╔═══╗╔═══╗╔═══╗╔═══╗
 ║╔═╗║║╔══╝╚╗╔╗║║╔═╗║║╔═╗║
