@@ -20,19 +20,6 @@ window.onload= function(){
 
 
 
-function commandStats(comm){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange=function(){
-        if(this.readyState==4 && this.status==200){
-            console.log(this.responseText);
-        }
-    };
-    request.open("POST","commandstats.php", true);
-    request.setRequestHeader("Content-type", "application/x-www-form-unrelcoded");
-    request.send("command="+comm);
-}
-
-
 function showSelectOfCommands(){
     //Abre terminal de opciones para dispositivos mobiles.
 
@@ -144,17 +131,13 @@ function commandResponse(c){
     let cm= c.toLowerCase();
     let text;
     switch(cm){
-        case 'a':
-        case 'ayuda':
+        case 'h':
+        case 'help':
             text = help();
             break;
         case 'pdf':
         case 'p':
             text = pdf();
-            break;
-        case 'help':
-        case 'h':
-            text = help();
             break;
         case 'c':
         case 'cv':
@@ -164,7 +147,7 @@ function commandResponse(c){
         case 'g':
             text = git();
             break;
-        case 'contacto':
+        case 'contact':
         case 'o':
             text = contact();
             break;
@@ -177,7 +160,7 @@ function commandResponse(c){
              document.querySelector('#terminal').remove();
              break;
         default:
-            text = "<strong>--- Comando invalido: '" + c + "' --- Lista de comandos:</strong><br>";
+            text = "<strong>--- Invalid command: '" + c + "' --- List of commands:</strong><br>";
             text+= help();
                     break;
     }
@@ -185,39 +168,44 @@ function commandResponse(c){
 }   
 
     function git(){
-        let text = "Entra a <a href='https://github.com/PedroRoberti1'";
-        text += "target='_blank onclick='event.stopPropagation();'> mi respositorio de Github</a>!";
+        let text = "Enter in <a href='https://github.com/PedroRoberti1'";
+        text += "target='_blank onclick='event.stopPropagation();'> my repositorio of github</a>!";
         return text;
     }
 
     function cv(){
-        let text ="Hola! Soy <strong class='hl'>Pedro Roberti</strong> y soy un desarrollador de software viviendo en Rosario, Argentina.<br>";
-        text += "Finalice mis estudios como programador en el terciario urquiza.<br>";
-        text += "Tengo conocimientos en lenguajes tales como PHP and JavaScript.<br>";
-        text += "Puedes visitar mi repositorio de GitHub y ver mis proyectos realizados."
+        let text ="Hello! Im <strong class='hl'>Pedro Roberti</strong> and I am a Software Developer living in Rosario, Argentina.<br>";
+        text += "I finished my studies as a programmer at the Urquiza Tertiary School<br>";
+        text += "I have knowledge in languajes such as PHP and JavaScript.<br>";
+        text += "You can visit my GitHub repository and see my completed project."
         return text;
     }
 
     function contact(){
         let text = "<strong class='hl'>Contactame!</strong>.<br>";
-        text += "-Mira <a href='https://www.linkedin.com/in/pedro-roberti-526a43358/' target='_blank onlick= 'event.stopPropagation();'> mi perfil de Linkedin</a>!<br>";
-        text += "-Enviame un mensaje a: <strong class= 'hl'>Pedroroberti@gmail.com</strong>";
+        text += "-Look <a href='https://www.linkedin.com/in/pedro-roberti-526a43358/' target='_blank onlick= 'event.stopPropagation();'> at my Linkedin profile</a>!<br>";
+        text += "-Send me a message to: <strong class= 'hl'>Pedroroberti@gmail.com</strong>";
         return text;
     }
 
     function pdf(){
-        let text = "<a href= '../assets/cv.pdf' dowload onclic='event.stopPropagation();'>Aqui</a>  tienes disponible mi cv, si necesitas mas informacion <strong class='hl'> contactame</strong>"
+        let text = "<a href= '../assets/cv.pdf' dowload onclic='event.stopPropagation();'>Here</a> is my cv available, if you need more information <strong class='hl'> contact me</strong>"
         return text;
     }
 
     function help(){
-        let text= "<strong class= 'hl'>Ayuda!</strong>.<br>";
-        text += "Para poder ver mi curriculum esceiba <strong class= 'hl'>cv</strong> o <strong class='hl'> c</strong>.<br>"
-        text += "Para descargar mi curriculum tradicional escriba: <strong class= 'hl'> pdf</strong> o <strong class='hl'>p</strong>. <br>"
-        text += "Para poder ver mi repositorio de GitHub escriba: <strong class= 'hl'> github</strong> o <strong class= 'hl'>g</strong>.<br>"
-        text += "Para ver las distintas opciones de contacto escriba: <strong class= 'hl'> contacto</strong> o <strong class= 'hl'> o</strong>."
+        let text= "<strong class= 'hl'>Help!</strong>.<br>";
+        text += "To see my resume write:<strong class= 'hl'> cv</strong> o <strong class='hl'> c</strong>.<br>"
+        text += "To download my traditional resume, write: <strong class= 'hl'> pdf</strong> pdf <strong class='hl'>p</strong>. <br>"
+        text += "To view my GitHub repository type:<strong class= 'hl'> github</strong> o <strong class= 'hl'>g</strong>.<br>"
+        text += "To see the different contact options write: <strong class= 'hl'> conctact</strong> o <strong class= 'hl'> o</strong>."
         return text;
     }
+
+
+
+
+
 
 
 
