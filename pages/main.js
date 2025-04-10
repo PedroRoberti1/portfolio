@@ -96,7 +96,7 @@ function keypressing(event)
 
 function command(c){
     //recibe un comando y lo ejecuta.
-
+ ///
 
     //Busca el ultimo comando en la terminal, lo elimina como "comando actual" y lo agrega como un comando ya ejecutado:
 
