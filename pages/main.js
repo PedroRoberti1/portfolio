@@ -20,17 +20,6 @@ window.onload= function(){
 
 
 
-function commandStats(comm){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange=function(){
-        if(this.readyState==4 && this.status==200){
-            console.log(this.responseText);
-        }
-    };
-    request.open("POST","commandstats.php", true);
-    request.setRequestHeader("Content-type", "application/x-www-form-unrelcoded");
-    request.send("command="+comm);
-}
 
 
 function showSelectOfCommands(){
@@ -108,7 +97,6 @@ function keypressing(event)
 function command(c){
     //recibe un comando y lo ejecuta.
 
-    commandStats(c);
 
     //Busca el ultimo comando en la terminal, lo elimina como "comando actual" y lo agrega como un comando ya ejecutado:
 
@@ -151,10 +139,6 @@ function commandResponse(c){
         case 'pdf':
         case 'p':
             text = pdf();
-            break;
-        case 'help':
-        case 'h':
-            text = help();
             break;
         case 'c':
         case 'cv':
@@ -206,7 +190,7 @@ function commandResponse(c){
     }
 
     function pdf(){
-        let text = "<a href= '../assets/cv.pdf' dowload onclic='event.stopPropagation();'>Aqui</a>  tienes disponible mi cv, si necesitas mas informacion <strong class='hl'> contactame</strong>"
+        let text = "<a href= 'assets/cv.pdf' dowload onclic='event.stopPropagation();'>Aqui</a> tienes disponible mi cv, si necesitas mas informacion <strong class='hl'> contactame</strong>"
         return text;
     }
 

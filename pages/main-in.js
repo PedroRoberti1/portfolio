@@ -20,6 +20,7 @@ window.onload= function(){
 
 
 
+
 function showSelectOfCommands(){
     //Abre terminal de opciones para dispositivos mobiles.
 
@@ -95,7 +96,6 @@ function keypressing(event)
 function command(c){
     //recibe un comando y lo ejecuta.
 
-    commandStats(c);
 
     //Busca el ultimo comando en la terminal, lo elimina como "comando actual" y lo agrega como un comando ya ejecutado:
 
